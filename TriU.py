@@ -23,13 +23,13 @@ A més, la funció ha de retornar els següents errors:
 import numpy as np
 
 def triU(U, b, tol=1e-10):
-    n = len(b)
-    if len(U) > 0 and len(U) != len(U[0]):
-        raise ValueError(f"La matriu és {len(U)}x{len(U[0])} i ha de ser quadrada!")
-    if n != len(U):
-        raise ValueError(f"Dimensions incompatibles! (files matriu) {len(U)} != {n} (elements vector)")
+    n = b.shape[0]
+    if U.shape[0] != U.shape[1]:
+        raise ValueError(f"La matriu és {U.shape[0])}x{U.shape[1]} i ha de ser quadrada!")
+    if n != U.shape[0]:
+        raise ValueError(f"Dimensions incompatibles! (files matriu) {U.shape[0]} != {n} (elements vector)")
     for i in range(n):
-        if np.abs(U[i][i]) < tol:
+        if np.abs(U[i,i]) < tol:
             raise ValueError("Element diagonal massa petit!")
     x = b
     for i in range(n - 1, -1, -1):
