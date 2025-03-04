@@ -9,7 +9,7 @@ import numpy as np
 def triL(L, b, tol=1e-10):
     n = b.shape[0]
     if L.shape[0] != L.shape[1]:
-        raise ValueError(f"La matriu és {L.shape[0])}x{L.shape[1]} i ha de ser quadrada!")
+        raise ValueError(f"La matriu és {L.shape[0]}x{L.shape[1]} i ha de ser quadrada!")
     if n != L.shape[0]:
         raise ValueError(f"Dimensions incompatibles! (files matriu) {L.shape[0]} != {n} (elements vector)")
     for i in range(n):
@@ -31,7 +31,7 @@ triL(L, b, ones=False, tol=1.e-10)
 def triL(L, b, ones=False, tol=1.e-10):
     n = b.shape[0]
     if L.shape[0] != L.shape[1]:
-        raise ValueError(f"La matriu és {L.shape[0])}x{L.shape[1]} i ha de ser quadrada!")
+        raise ValueError(f"La matriu és {L.shape[0]}x{L.shape[1]} i ha de ser quadrada!")
     if n != L.shape[0]:
         raise ValueError(f"Dimensions incompatibles! (files matriu) {L.shape[0]} != {n} (elements vector)")
     for i in range(n):
