@@ -32,8 +32,8 @@ def triU(U, b, tol=1e-10):
         if np.abs(U[i,i]) < tol:
             raise ValueError("Element diagonal massa petit!")
     x = b
-    for i in range(n - 1, -1, -1):
-        for j in range(i + 1, n):
-            x[i] -= U[i][j]*x[j]
-        x[i] /= U[i][i]
+    for i in range(n-1,-1,-1):
+        for j in range(i+1,n):
+            x[i] -= U[i,j]*x[j]
+        x[i] /= U[i,i]
     return x
