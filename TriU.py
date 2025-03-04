@@ -25,7 +25,7 @@ import numpy as np
 def triU(U, b, tol=1e-10):
     n = b.shape[0]
     if U.shape[0] != U.shape[1]:
-        raise ValueError(f"La matriu és {U.shape[0])}x{U.shape[1]} i ha de ser quadrada!")
+        raise ValueError(f"La matriu és {U.shape[0]}x{U.shape[1]} i ha de ser quadrada!")
     if n != U.shape[0]:
         raise ValueError(f"Dimensions incompatibles! (files matriu) {U.shape[0]} != {n} (elements vector)")
     for i in range(n):
