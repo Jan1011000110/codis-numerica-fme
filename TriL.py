@@ -29,18 +29,18 @@ triL(L, b, ones=False, tol=1.e-10)
 '''
 
 def triL(L, b, ones=False, tol=1.e-10):
-    n = len(b)
-    if len(L) > 0 and len(L) != len(L[0]):
-        raise ValueError(f"La matriu és {len(L)}x{len(L[0])} i ha de ser quadrada!")
-    if n != len(L):
-        raise ValueError(f"Dimensions incompatibles! (files matriu) {len(L)} != {n} (elements vector)")
+    n = b.shape[0]
+    if L.shape[0] != L.shape[1]:
+        raise ValueError(f"La matriu és {L.shape[0])}x{L.shape[1]} i ha de ser quadrada!")
+    if n != L.shape[0]:
+        raise ValueError(f"Dimensions incompatibles! (files matriu) {L.shape[0]} != {n} (elements vector)")
     for i in range(n):
-        if np.abs(L[i][i]) < tol:
+        if np.abs(L[i,i]) < tol:
             raise ValueError("Element diagonal massa petit!")
     x = b
     for i in range(n):
         for j in range(i):
-            x[i] -= L[i][j]*x[j]
+            x[i] -= L[i,j]*x[j]
         if not ones:
-            x[i] /= L[i][i]
+            x[i] /= L[i,i]
     return x
