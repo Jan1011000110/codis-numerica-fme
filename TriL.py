@@ -18,7 +18,7 @@ def triL(L, b, tol=1e-10):
     x = b
     for i in range(n):
         for j in range(i):
-            x[i] -= L[i][j] * x[j]
+            x[i] -= L[i][j]*x[j]
         x[i] /= L[i][i]
     return x
 
@@ -40,7 +40,7 @@ def triL(L, b, ones=False, tol=1.e-10):
     x = b
     for i in range(n):
         for j in range(i):
-            x[i] -= L[i][j] * x[j]
+            x[i] -= L[i][j]*x[j]
         if not ones:
             x[i] /= L[i][i]
     return x
