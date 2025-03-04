@@ -21,3 +21,26 @@ def triL(L, b, tol=1e-10):
             x[i] -= L[i][j] * x[j]
         x[i] /= L[i][i]
     return x
+
+'''
+Modifica la funció triL del dia anterior de manera que hi hagi un paràmetre opcional anomenat ones que, quan ones=True presuposi que la matriu d'entrada té uns a la diagonals i no faci la divisió per l'element L[i,i]. És a dir, la funció ara serà:
+
+triL(L, b, ones=False, tol=1.e-10)
+'''
+
+def triL(L, b, ones=False, tol=1.e-10):
+    n = len(b)
+    if len(L) > 0 and len(L) != len(L[0]):
+        raise ValueError(f"La matriu és {len(L)}x{len(L[0])} i ha de ser quadrada!")
+    if n != len(L):
+        raise ValueError(f"Dimensions incompatibles! (files matriu) {len(L)} != {n} (elements vector)")
+    for i in range(n):
+        if np.abs(L[i][i]) < tol:
+            raise ValueError("Element diagonal massa petit!")
+    x = b
+    for i in range(n):
+        for j in range(i):
+            x[i] -= L[i][j] * x[j]
+        if not ones:
+            x[i] /= L[i][i]
+    return x
