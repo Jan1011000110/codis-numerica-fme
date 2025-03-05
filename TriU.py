@@ -28,12 +28,12 @@ def triU(U, b, tol=1e-10):
         raise ValueError(f"La matriu és {U.shape[0]}x{U.shape[1]} i ha de ser quadrada!")
     if n != U.shape[0]:
         raise ValueError(f"Dimensions incompatibles! (files matriu) {U.shape[0]} != {n} (elements vector)")
-    for i in range(n):
-        if np.abs(U[i,i]) < tol:
-            raise ValueError("Element diagonal massa petit!")
+   
     x = b.copy()
     for i in range(n-1,-1,-1):
         for j in range(i+1,n):
             x[i] -= U[i,j]*x[j]
+        if np.abs(U[i,i]) < tol:
+            raise ValueError("Element diagonal massa petit!")
         x[i] /= U[i,i]
     return x
