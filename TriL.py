@@ -12,13 +12,13 @@ def triL(L, b, tol=1e-10):
         raise ValueError(f"La matriu és {L.shape[0]}x{L.shape[1]} i ha de ser quadrada!")
     if n != L.shape[0]:
         raise ValueError(f"Dimensions incompatibles! (files matriu) {L.shape[0]} != {n} (elements vector)")
-    for i in range(n):
-        if np.abs(L[i,i]) < tol:
-            raise ValueError("Element diagonal massa petit!")
+    
     x = b.copy()
     for i in range(n):
         for j in range(i):
             x[i] -= L[i,j]*x[j]
+        if np.abs(L[i,i]) < tol:
+            raise ValueError("Element diagonal massa petit!")
         x[i] /= L[i,i]
     return x
 
@@ -34,13 +34,13 @@ def triL(L, b, ones=False, tol=1.e-10):
         raise ValueError(f"La matriu és {L.shape[0]}x{L.shape[1]} i ha de ser quadrada!")
     if n != L.shape[0]:
         raise ValueError(f"Dimensions incompatibles! (files matriu) {L.shape[0]} != {n} (elements vector)")
-    for i in range(n):
-        if np.abs(L[i,i]) < tol:
-            raise ValueError("Element diagonal massa petit!")
+        
     x = b.copy()
     for i in range(n):
         for j in range(i):
             x[i] -= L[i,j]*x[j]
-        if not ones:
+        if np.abs(L[i,i]) < tol:
+            raise ValueError("Element diagonal massa petit!")
+        elif not ones:
             x[i] /= L[i,i]
     return x
