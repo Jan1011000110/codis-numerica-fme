@@ -37,7 +37,7 @@ def triL(L, b, ones=False, tol=1.e-10):
     for i in range(n):
         if np.abs(L[i,i]) < tol:
             raise ValueError("Element diagonal massa petit!")
-    x = b.copy(
+    x = b.copy()
     for i in range(n):
         for j in range(i):
             x[i] -= L[i,j]*x[j]
