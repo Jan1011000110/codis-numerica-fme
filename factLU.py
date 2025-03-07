@@ -6,7 +6,7 @@ def factLU(A, tol = 1.e-10):
     if n != A.shape[1]:
         raise ValueError("La matriu no és quadrada!")
             
-    for k in range(0,n-1):
+    for k in range(n-1):
         for i in range(k+1,n):
             if np.abs(M[k,k]) < tol:
                 raise ValueError("Pivot massa petit! Matriu (pròxima a) singular!")
