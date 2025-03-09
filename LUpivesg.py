@@ -3,7 +3,7 @@ import numpy as np
 def LUpivesg(A, tol = 1.e-10):
     M = A.copy()
     n = A.shape[0]
-    p = np.array([i for i in range(n)])
+    p = np.arange(n)
     if n != A.shape[1]:
         raise ValueError("La matriu no és quadrada!")
     
