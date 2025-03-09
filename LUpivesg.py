@@ -8,7 +8,7 @@ def LUpivesg(A, tol = 1.e-10):
         raise ValueError("La matriu no és quadrada!")
     
     for k in range(n-1):
-        s = np.array([np.max(np.abs(M[i,k:])) for i in range(k,n)])
+        s = np.max(np.abs(M[k:,k:]), axis=1)
         index = k + np.argmax(np.abs(M[k:,k]/s)) 
         p[[k,index]] = p[[index,k]]
         M[[k,index]] = M[[index,k]]
