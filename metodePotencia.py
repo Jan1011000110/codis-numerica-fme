@@ -1,4 +1,3 @@
-import numpy as np
 def metode_potencia(A, z, tol=1.e-10, maxIter=100):
     sigma = z.T@A@z
     for i in range(1, maxIter+1):
@@ -8,6 +7,5 @@ def metode_potencia(A, z, tol=1.e-10, maxIter=100):
         dif = np.abs(nsigma - sigma)
         z, sigma = nz, nsigma
         if dif < tol:
-            print(z,sigma)
-            return sigma, z/(sigma**i), i
+            return sigma, z, i
     return -maxIter
