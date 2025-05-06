@@ -8,4 +8,4 @@ def metode_potencia(A, z, tol=1.e-10, maxIter=100):
         z, sigma = nz, nsigma
         if dif < tol:
             return sigma, z, i
-    return -maxIter
+    return sigma, z, -maxIter
